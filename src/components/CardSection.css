@@ -1,0 +1,92 @@
+/* Main Section Styling */
+.card-section {
+    padding: 3rem 2rem;
+    background-color: #f4fdf5; /* Light greenish background */
+    text-align: center;
+  }
+  
+  /* Section Title */
+  .card-section h2 {
+    text-align: left;
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #1a8f35; /* Dark green */
+  }
+  
+  /* Section Subtitle */
+  .card-section p {
+    text-align: left;
+    color: #6c757d; /* Subtle grey for descriptions */
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  /* Card List */
+  .card-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  
+  /* Single Card Styling */
+  .card {
+    background: #ffffff; /* White background */
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 2px solid #c3e6cb; /* Light green border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: left;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    background-color: #e9f7eb; /* Slight green highlight */
+  }
+  
+  /* Card Title */
+  .card h3 {
+    font-size: 1.4rem;
+    margin: 0 0 1rem;
+    color: #155724; /* Dark green */
+  }
+  
+  /* Card Description */
+  .card p {
+    font-size: 1rem;
+    margin: 0;
+    color: #6c757d; /* Subtle grey for text */
+  }
+
+  /* Icon Container */
+.icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e9f7eb; /* Light green background */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 1rem;
+    color: #1a8f35; /* Dark green color for the icon */
+    font-size: 1.8rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card h3 {
+    font-size: 1.5rem;
+    margin-top: 0;
+    text-align: center;
+  }
+  
+  /* Responsive Design */
+  @media screen and (max-width: 768px) {
+    .card {
+      width: 100%;
+    }
+  }
+  
