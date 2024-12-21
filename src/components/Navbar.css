@@ -14,7 +14,7 @@
     background-size: contain; /* Ensures the entire logo is visible */
     height: 40px; /* Use fixed height or adjust as per design */
     width: 150px; /* Adjust width to maintain aspect ratio */
-}
+}       
 
 .nav-links {
     display: flex;
