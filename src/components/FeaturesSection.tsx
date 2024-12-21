@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion"; // Import motion
 import "./FeaturesSection.css";
 
 const FeaturesSection: React.FC = () => {
@@ -6,21 +7,21 @@ const FeaturesSection: React.FC = () => {
 
   // Mock content for each feature
   const featureContent: Record<string, string> = {
-    coding:
-      "<div>\n  <h1>Coding Assessment</h1>\n  <p>Write efficient code...</p>\n</div>",
-    "multiple-choice":
-      "<div>\n  <h1>MCQ Test</h1>\n  <p>Select the right answer...</p>\n</div>",
-    "fill-blanks":
-      "<div>\n  <h1>Fill in the Blanks</h1>\n  <p>Complete the missing words...</p>\n</div>",
-    descriptive:
-      "<div>\n  <h1>Descriptive Test</h1>\n  <p>Write detailed answers...</p>\n</div>",
-    video:
-      "<div>\n  <h1>Video Assessment</h1>\n  <p>Record your answers...</p>\n</div>",
-    html: "<div>\n  <h1>Responsive Navbar</h1>\n  <p>HTML code...</p>\n</div>",
+    coding: "<div><h1>Coding Assessment</h1><p>Write efficient code...</p></div>",
+    "multiple-choice": "<div><h1>MCQ Test</h1><p>Select the right answer...</p></div>",
+    "fill-blanks": "<div><h1>Fill in the Blanks</h1><p>Complete the missing words...</p></div>",
+    descriptive: "<div><h1>Descriptive Test</h1><p>Write detailed answers...</p></div>",
+    video: "<div><h1>Video Assessment</h1><p>Record your answers...</p></div>",
+    html: "<div><h1>Responsive Navbar</h1><p>HTML code...</p></div>",
   };
 
   return (
-    <section className="features-container">
+    <motion.section
+      className="features-container container"
+      initial={{ opacity: 0, y: 50 }} // Initial animation state
+      animate={{ opacity: 1, y: 5 }} // Animation on load (fade in + move up)
+      transition={{ duration: 1 }} // Duration of the animation
+    >
       {/* Heading */}
       <div className="features-header">
         <h1>
@@ -37,16 +38,16 @@ const FeaturesSection: React.FC = () => {
         {/* Left Side - Options */}
         <div className="features-options">
           {Object.keys(featureContent).map((feature) => (
-            <button
+            <motion.button
               key={feature}
-              className={`feature-button ${
-                selectedFeature === feature ? "active" : ""
-              }`}
+              className={`feature-button ${selectedFeature === feature ? "active" : ""}`}
               onClick={() => setSelectedFeature(feature)}
+              whileHover={{ scale: 1.1 }} // Slight scaling effect on hover
+              whileTap={{ scale: 0.9 }}  // Slight shrinking effect on tap
             >
               <i className={`icon ${feature}`}></i>{" "}
               {feature.replace("-", " ").toUpperCase()}
-            </button>
+            </motion.button>
           ))}
         </div>
 
@@ -58,18 +59,25 @@ const FeaturesSection: React.FC = () => {
               <i className="icon-settings"></i>
             </div>
             <div className="code-content fade-in">
-              <pre>
-                <code>{featureContent[selectedFeature]}</code>
-              </pre>
+              <motion.div
+                className="code-preview"
+                dangerouslySetInnerHTML={{
+                  __html: featureContent[selectedFeature],
+                }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
+              />
             </div>
           </div>
+
           <div className="preview-pane">
             <span>Preview</span>
             <div className="loading-spinner"></div>
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

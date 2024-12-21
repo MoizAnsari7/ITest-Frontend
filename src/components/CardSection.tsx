@@ -1,5 +1,6 @@
 import React from 'react';
 import './CardSection.css';
+import { motion } from 'framer-motion';
 
 const CardSection: React.FC = () => {
   const features = [
@@ -26,21 +27,27 @@ const CardSection: React.FC = () => {
   ];
 
   return (
-    <section className="container card-section">
-      <h2><span className='text-dark'>Built-in</span> Cheat Resistance</h2>
+    <motion.section className="container card-section">
+      <motion.h1
+    initial={{ opacity: 3 }}
+    animate={{ opacity: 2 }}
+    transition={{ duration: 0.5, delay: 0.2 }}><span className='text-dark'>Built-in</span> Cheat Resistance</motion.h1>
       <p>Deter and detect rule violations using a host of anti-cheating measures.</p>
-      <div className="card-list">
+      <motion.div className="card-list"        >
         {features.map((feature, index) => (
-          <div className="card" key={index}>
+          <motion.div className="card" key={index}   initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.5, delay: 0.5 * index }}
+  >
             <div className="icon-container">
               <i className={feature.icon}></i>
             </div>
             <h3>{feature.title}</h3>
             <p>{feature.description}</p>
-          </div>
+          </motion.div>
         ))}
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 };
 
