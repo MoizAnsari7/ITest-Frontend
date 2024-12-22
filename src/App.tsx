@@ -1,23 +1,17 @@
 import React from 'react';
-import Navbar from './components/Navbar';
-import HeroSection from './components/HeroSection';
-import FeaturesSection from './components/FeaturesSection';
-import CardSection from './components/CardSection';
-import { motion } from 'framer-motion';
+import { Route, Routes } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import SignInPage from './pages/SignInPage';
 
-const HomePage: React.FC = () => {
+const App: React.FC = () => {
     return (
-        <motion.div>
-            <Navbar />
-        
-            <HeroSection />
-           
-           <FeaturesSection />
-
-
-           <CardSection />
-        </motion.div>
+        <>
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/signin" element={<SignInPage />} />
+            </Routes>
+        </>
     );
 };
 
-export default HomePage;
+export default App;

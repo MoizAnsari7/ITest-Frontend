@@ -1,7 +1,15 @@
 import React from 'react';
 import './Navbar.css';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
+  
+  const navigate = useNavigate();
+
+  const handleSignIn = () =>{
+    navigate('/signin');
+  }
+
   return (
     <nav className="navbar navbar-expand-lg sticky-top bg-light">
       <div className="container">
@@ -36,8 +44,8 @@ const Navbar: React.FC = () => {
             </li>
           </ul>
           <div className="d-flex ms-3">
-            <button className="btn btn-outline-success me-2">Sign In</button>
-            <button className="btn btn-success">Sign Up for Free</button>
+            <button className="btn btn-outline-success me-2" onClick={handleSignIn}>Sign In</button>
+            {/* <button className="btn btn-success">Sign Up for Free</button> */}
           </div>
         </div>
       </div>
