@@ -1,61 +1,31 @@
 import React from 'react';
-import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
-import {jwtDecode} from 'jwt-decode';
-import axios from 'axios';
-
-const CLIENT_ID = '244190870432-8cbmecah0r4ebg1cf4djurcqlgemdgj3.apps.googleusercontent.com'; // Replace with your actual Google Client ID
-
-interface GoogleUser {
-    name: string;
-    email: string;
-    picture: string;
-    sub: string; // Google user ID
-}
 
 const SignInPage: React.FC = () => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const handleLoginSuccess = async (response: any) => {
-        try {
-            if (response?.credential) {
-                const token = response.credential;
-    
-                // Decode the JWT token
-                const userData: GoogleUser = jwtDecode<GoogleUser>(token);
-                console.log('Decoded User Data:', userData);
-    
-                // Send the token to the backend
-                const res = await axios.post('http://192.168.29.88:5000/api/auth/google', { token });
-    
-                console.log('Server Response:', res.data);
-                alert(`Welcome, ${res.data.user.name}!`);
-            } else {
-                console.error('Credential not found in response');
-                alert('Login failed. No credential received.');
-            }
-        } catch (error) {
-            console.error('Error during login:', error);
-            alert('An error occurred. Please try again.');
-        }
-    };
-    
+  const handleLogin = () => {
+    window.location.href = 'http://localhost:4500/api/auth/google';
+  };
 
-    return (
-        <div className="container w-50 pt-5 mt-5">
-        <GoogleOAuthProvider  clientId={CLIENT_ID}>
-            <div style={{ textAlign: 'center', marginTop: '100px' }}>
-                <h1>Sign In Page</h1>
-                <p>Please log in with your Google account to continue.</p>
-                <GoogleLogin
-                    onSuccess={handleLoginSuccess}
-                    onError={() => {
-                        console.error('Login Failed');
-                        alert('Google Login failed. Please try again.');
-                    }}
-                />
-            </div>
-        </GoogleOAuthProvider>
-        </div>
-    );
+  return (
+    <div className="d-flex justify-content-center align-items-center vh-100 bg-light">
+      <div className="text-center p-5 bg-white shadow rounded" style={{ maxWidth: '400px', width: '100%' }}>
+        <h2 className="mb-4 text-primary">Welcome Back!</h2>
+        <p className="mb-4 text-secondary">Sign in to continue to your dashboard</p>
+        <button 
+          className="btn btn-primary d-flex align-items-center justify-content-center px-4 py-2 w-100" 
+          onClick={handleLogin}
+          style={{ fontSize: '1rem', fontWeight: '500' }}
+        >
+          <img
+            className="me-2"
+            src="https://banner2.cleanpng.com/20240216/tgc/transparent-google-logo-google-logo-in-black-circle-colorful-1710875587150.webp"
+            alt="Google Icon"
+            style={{ width: '20px', height: '20px' }}
+          />
+          <span>Sign in with Google</span>
+        </button>
+      </div>
+    </div>
+  );
 };
 
 export default SignInPage;
