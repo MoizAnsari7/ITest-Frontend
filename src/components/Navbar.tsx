@@ -105,7 +105,7 @@ const Navbar: React.FC = () => {
             </li>
             </ul>
                 <img
-                  src={user?.picture}
+                  src={user?.profilePhoto}
                   alt={user?.displayName}
                   className="rounded-circle me-2"
                   width="40"
