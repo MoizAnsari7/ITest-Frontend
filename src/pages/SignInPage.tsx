@@ -21,7 +21,7 @@ const SignInPage: React.FC = () => {
             alt="Google Icon"
             style={{ width: '20px', height: '20px' }}
           />
-          <span>Sign in with Google</span>
+          <span>Sign in with Google</span>   
         </button>
       </div>
     </div>
