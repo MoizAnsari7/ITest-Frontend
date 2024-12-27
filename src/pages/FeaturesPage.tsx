@@ -14,3 +14,4 @@ const FeaturesPage: React.FC = () => {
 };
 
 export default FeaturesPage;
+   

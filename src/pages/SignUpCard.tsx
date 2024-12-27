@@ -5,7 +5,7 @@ const SignUpCard = () => {
 const navigate = useNavigate();
 
 const handleSignIn = () =>{
-navigate('/signin');
+navigate('/signin');  
 }
 
   return (

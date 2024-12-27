@@ -20,5 +20,5 @@ const HomePage: React.FC = () => {
         </motion.div>
     );
 };
-
+   
 export default HomePage;

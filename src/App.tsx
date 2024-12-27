@@ -11,7 +11,7 @@ const App: React.FC = () => {
                 <Route path="/signin" element={<SignInPage />} />
             </Routes>
         </>
-    );
+    );   
 };
 
 export default App;
